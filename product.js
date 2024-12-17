@@ -1,6 +1,6 @@
 class Product
 {
-	constructor(a, b) {
+	constructor(name, desc; ) {
 		this.a = a;
 		this.b;
 	}
