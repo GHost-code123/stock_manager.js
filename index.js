@@ -1,32 +1,50 @@
-const invento = [];
+const { get_input, ask_to_continue } = require('./utils.js');
+const colors = require('colors');
 
-const desc = `jkwhfksdflksdfhkjfdhlkshdf
-dfjkhkjshfjklsdfhsjkdf
-sdkjfskdjflkjsdkfjsd
-skjdhfkjsdjkfsdksdfkjsdfkhsdkjfhkjsd
-sdlkfjsdljfkljsdlkfjlsdkjlfkqsd
-ljhsdkfskdfqf`;
+const banner = "\n ----------- ◆ ".dim + "🧮" + " INVENTO ".magenta.bold + "🔢 " + "◆ -----------".dim; 
 
-const Product = {
-	name: "abc",
-	desc: desc,
-	quantity: 100,
-	price: 1000
-};
+// ------------------------------------------------------------ //
+// ------------------------------------------------------------ //
+// ------------------------------------------------------------ //
 
-for (let i = 0; i < 10; i++)
-{
-	invento.push(Product);
+/// --------------------------------------------------------------- ///
+function showMenu() {
+	console.log('\nChoose an operation:\n'.yellow +
+		'  1 - Add a product\n' +
+		'  2 - Show a product informations\n' +
+		'  3 - Update a product informations\n' +
+		'  4 - Delete a product\n' +
+		'  5 - List all products\n' +
+		'  q - quit\n');
 }
 
-// for (let i = 0; i < invento.length; i++)
-// {
-// 	console.log(invento[i]);
-// }
+(() => {
+	console.log(banner);
+	
+	while (true)
+	{
+		showMenu();
 
-const structDatas = [
-    { handler: 'http', endpoint: desc, method: 'ALL' },
-    { handler: 'event', endpoint: 'http://localhost:3000/event', method: 'POST' },
-    { handler: 'GCS', endpoint: 'http://localhost:3000/GCS', method: 'POST' }
-];
-console.table(structDatas);
+		let option = get_input("Enter your option: ".brightYellow);
+
+		switch (option) {
+			case '1':
+				add();
+				break;
+			case '':
+				break ;
+			case 'q':
+			case null:
+				return ;
+			
+			default:
+				console.error("Invalid option! ".red + "Please choose a valid option".yellow);
+				break;
+			
+			}
+
+	}
+
+})();
+
+console.log("Bye");
